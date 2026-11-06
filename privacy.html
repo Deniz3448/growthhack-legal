@@ -10,7 +10,7 @@
 <main>
 <header>
 <h1>Growthy Gizlilik Politikası</h1>
-<p class="muted">Son güncelleme: 15 Ekim 2026 · <a href="#en">English version below</a></p>
+<p class="muted">Son güncelleme: 6 Kasım 2026 · <a href="#en">English version below</a></p>
 <nav><a href="index.html">Ana sayfa</a><a href="terms.html">Kullanım Şartları</a></nav>
 </header>
 
@@ -21,7 +21,8 @@
 <li><strong>Hesap bilgileri:</strong> Apple ile Giriş yaptığınızda Apple'ın ilettiği kullanıcı kimliği, e-posta adresi (Apple'ın e-posta gizleme hizmetini seçtiyseniz aktarma adresi) ve paylaşmayı seçerseniz adınız.</li>
 <li><strong>Yüklediğiniz içerik:</strong> Koleksiyonlarınıza eklediğiniz fotoğraf, video, PDF ve dosyalar, bağlantılar ve notlar <strong>telefonunuzda saklanır</strong>, sunucularımıza kaydedilmez. Bir üretim başlattığınızda yalnız o üretim için seçtiğiniz referans dosyalar ve yazdığınız metinler (replik, açıklama, konu) üretim sağlayıcısına iletilir. Bu dosyalar insan yüzleri içerebilir.</li>
 <li><strong>Karakterler:</strong> UGC karakteri oluşturduğunuzda yazdığınız tarif ve üretilen portreler; portreler telefonunuzda durur, her UGC üretiminde kimlik referansı olarak üretim sağlayıcısına iletilir.</li>
-<li><strong>Videomu düzenle:</strong> Düzenlemek için seçtiğiniz video telefonunuzdan çıkmaz. Videodaki konuşma Apple'ın konuşma tanıma hizmetiyle yazıya dökülür (Apple'ın sunucularında işlenebilir); videodan alınan en çok 8 kare ve konuşmanın yazılı dökümü kurgu planı için yapay zekâ sağlayıcısına iletilir.</li>
+<li><strong>Videomu düzenle:</strong> Düzenlemek için seçtiğiniz videonun görüntüsünün tamamı telefonunuzdan çıkmaz. Videonun <strong>ses kaydı</strong>, konuşmayı yazıya dökmek için parçalar hâlinde ElevenLabs'e (ABD) gönderilir; bu hizmete ulaşılamazsa Apple'ın konuşma tanıma hizmeti kullanılır (Apple'ın sunucularında işlenebilir). Videodan alınan en çok 60 kare Higgsfield'a yüklenir ve konuşmanın yazılı dökümüyle birlikte kurgu planı için yapay zekâ sağlayıcısına (Anthropic) iletilir.</li>
+<li><strong>Bildirimler:</strong> Bildirimlere izin verirseniz cihazınızın bildirim belirteci ve uygulama diliniz hesabınızla birlikte saklanır; bildirimler Apple Push Bildirim Servisi (APNs) üzerinden gönderilir. Çıkış yaptığınızda belirteç silinir.</li>
 <li><strong>Üretilen içerik:</strong> Üretilen video ve görseller üretim sağlayıcısının sunucusunda yaklaşık 7 gün durur ve Uygulama bunları telefonunuza indirir; biz dosyayı saklamayız, yalnız işin kaydını (model, metin, tarih, adres) tutarız. İçerik planları ve takvim kayıtları metin olarak hesabınızda saklanır.</li>
 <li><strong>Satın alma kayıtları:</strong> Apple'ın ilettiği işlem kimliği, ürün kimliği ve tarih. Ödeme kartı bilgileriniz yalnız Apple'dadır; biz hiçbir zaman görmeyiz.</li>
 <li><strong>Teknik kayıtlar:</strong> Güvenlik ve hata ayıklama için sunucu günlüklerinde IP adresi ve istek zamanı gibi standart kayıtlar.</li>
@@ -45,26 +46,33 @@
 <li><strong>Supabase Inc.:</strong> Veritabanı ve kimlik doğrulama altyapısı; iş kayıtları, kredi bakiyesi, içerik planları ve takviminiz burada tutulur. Dosya saklanmaz.</li>
 <li><strong>Higgsfield AI:</strong> Video ve görsel üretimi. Referans dosyalarınız telefonunuzdan doğrudan Higgsfield'a yüklenir ve istem metniyle birlikte işlenir; Higgsfield çıktıları yaklaşık 7 gün tutar, Uygulama bu sürede dosyayı telefonunuza indirir.</li>
 <li><strong>Anthropic PBC (Claude):</strong> Referans görsellerinizin analizi, senaryo ve sahne yazımı, kalite incelemesi, uygun video stilinin seçimi, içerik takvimi ve reklam danışmanı raporu Claude modeliyle yapılır. Seçtiğiniz referans görseller (yüzler dâhil), video kareleri, konuşma dökümleri, yazdığınız metinler ve koleksiyonunuzdaki link, not ve PDF/metin içerikleri (telefonda okunup metin olarak) modele iletilir.</li>
-<li><strong>ElevenLabs:</strong> Seslendirme. Anlatım ve replik metinleri seslendirilir; Videomu düzenle'de seslendirme satırları işlenir.</li>
+<li><strong>ElevenLabs (ABD):</strong> Seslendirme, müzik ve konuşma dökümü. Anlatım ve replik metinleri seslendirilir; Videomu düzenle'de seslendirme satırları işlenir ve yüklediğiniz videonun ses kaydı yazıya dökülür (ses yalnız döküm için işlenir, tarafımızca saklanmaz).</li>
+<li><strong>BytePlus (ByteDance grubu, Singapur):</strong> Seedance video modeli ve karakter portresi üretimi. Bu türlerde seçtiğiniz referans görseller (karakter portresindeki yüz dâhil), istem metni ve seslendirme dosyası BytePlus'a gönderilir; çıktılar yaklaşık 24 saat tutulur ve bu sürede Uygulama'ya aktarılır. Kimliğiniz yerine hesap kimliğinizin geri döndürülemez özeti iletilir.</li>
 </ul>
 <p><strong>Açık onay:</strong> Yukarıdaki yapay zekâ hizmetlerine veri gönderilmeden önce, ilk girişte hangi verinin hangi hizmete gittiği gösterilerek açık onayınız alınır; onay vermeden üretim yapılmaz. Onayınızı <strong>Profil › Yapay zekâ veri paylaşımı</strong> bölümünden geri alabilirsiniz; geri alırsanız yeni üretim başlatılamaz.</p>
-<p>Bu sağlayıcıların sunucuları Türkiye dışında (AB ve/veya ABD) bulunabilir. Yurt dışına aktarım, KVKK m. 9 kapsamında Uygulama'yı kullanmaya başlarken verdiğiniz açık rızaya ve sağlayıcıların sözleşmesel taahhütlerine dayanır.</p>
+<p>Bu sağlayıcıların sunucuları Türkiye dışında (AB, ABD ve/veya Singapur) bulunabilir. Yurt dışına aktarım, KVKK m. 9 kapsamında Uygulama'yı kullanmaya başlarken verdiğiniz açık rızaya ve sağlayıcıların sözleşmesel taahhütlerine dayanır.</p>
 
 <h2>4. Saklama süresi</h2>
 <ul>
 <li>Koleksiyonlarınız ve indirilen içerikler telefonunuzda durur; Uygulama'yı silince silinir. İş kayıtları, içerik planları ve takvim kayıtları siz silene ya da hesabınızı kapatana kadar hesabınızda saklanır.</li>
 <li>Satın alma kayıtları, yasal yükümlülükler ve Apple'ın iade süreçleri için gerekli süre boyunca tutulur.</li>
 <li>Sunucu günlükleri sınırlı süre tutulur ve otomatik silinir.</li>
-<li>Hoş geldin hediyesinin (ücretsiz deneme videosu) aynı kişiye bir kez verilmesi için e-posta adresinizin geri döndürülemez özeti (SHA-256) hesabınız silinse de saklanır; bu özetten e-posta adresinize ulaşılamaz.</li>
+<li>Hoş geldin hediyesinin (ücretsiz deneme videosu) aynı kişiye bir kez verilmesi için Apple kullanıcı kimliğinizin (yoksa e-posta adresinizin) SHA-256 özeti hesabınız silinse de saklanır. Bu özet doğrudan kimliğinizi göstermez ancak takma adlı (pseudonymous) bir veridir.</li>
+<li>Hesabınızı silseniz de şu kayıtlar sizinle ilişkisi kesilerek ya da kullanıcı numarasıyla yasal ve kötüye kullanımı önleme amaçlarıyla tutulur: yapay zekâ veri paylaşımı onay kayıtları (ne zaman, hangi sürüme onay verildiği), abonelik dönemleri, satın alma işleminin hangi hesaba kredi olarak yazıldığı ve konuşma dökümü kullanım sayaçları.</li>
 <li>Apple bir satın almayı iade ederse bu bilgi Apple'dan bize iletilir ve o satın almayla eklenen krediler bakiyenizden düşülür.</li>
 </ul>
 <p>Uygulamadaki <strong>Profil › Hesabı sil</strong> seçeneği hesabınızı, iş kayıtlarınızı, planlarınızı, takviminizi ve kredi bakiyenizi kalıcı olarak siler. Kullanılmamış krediler iade edilmez. Telefonunuzdaki dosyalar size aittir, silinmez.</p>
+
+<h3 id="kullanim-olcumu">Anonim kullanım ölçümü</h3>
+<p>Uygulamayı iyileştirmek için hangi adımların kullanıldığını sayarız (ör. uygulama açıldı, giriş yapıldı, deneme başladı, ödeme ekranı görüldü). Bunun için uygulama kurulurken rastgele bir cihaz kimliği üretir; bu kimlik hesabınıza, adınıza ya da e-postanıza bağlanmaz. Sunucuya yalnız adımın adı, tarih, arayüz dili ve uygulama sürümü gider; her adım günde en çok bir kez sayılır. Reklam ya da takip amacıyla kullanılmaz, üçüncü kişilerle paylaşılmaz; Supabase'de (AB, Frankfurt) en çok 13 ay tutulur.</p>
+<h3 id="bekleme-listesi">Bekleme listesi (web sitesi)</h3>
+<p>Web sitemizdeki bekleme listesi formuna yazdığınız e-posta adresi yalnız Uygulama yayına girdiğinde size tek bir haber e-postası göndermek için Supabase'de (AB, Frankfurt) saklanır; başka e-posta gönderilmez, üçüncü kişilerle paylaşılmaz. Kötüye kullanımı önlemek için IP adresinizin özeti (karması) en çok 1 gün tutulur. Haber e-postası gönderildikten sonra liste silinir; daha önce silinmesini <a href="mailto:growthyinformation@gmail.com">growthyinformation@gmail.com</a> adresine yazarak isteyebilirsiniz. Site çerez, analiz ya da takip aracı kullanmaz; yazı tipleri sitenin kendi sunucusundan yüklenir.</p>
 
 <h2>5. Haklarınız</h2>
 <p>KVKK m. 11 ve GDPR kapsamında verilerinize erişme, düzeltme, silme, işlemeyi kısıtlama, itiraz ve veri taşınabilirliği haklarına sahipsiniz. Taleplerinizi <a href="mailto:growthyinformation@gmail.com">growthyinformation@gmail.com</a> adresine iletebilirsiniz; en geç 30 gün içinde yanıtlanır.</p>
 
 <h2>6. Güvenlik</h2>
-<p>Veriler aktarım sırasında TLS ile şifrelenir. Veritabanında satır düzeyinde erişim kuralları kullanılır; bir kullanıcı başka bir kullanıcının verisine erişemez. Üretim sağlayıcılarının anahtarları yalnız sunucu tarafında tutulur, uygulamaya gömülmez.</p>
+<p>Veriler aktarım sırasında TLS ile şifrelenir. Veritabanında satır düzeyinde erişim kuralları kullanılır; bir kullanıcı başka bir kullanıcının verisine erişemez. Üretim sağlayıcılarının anahtarları yalnız sunucu tarafında tutulur, uygulamaya gömülmez. Kişisel verilerinizi etkileyen bir güvenlik ihlali olursa öğrendiğimiz andan itibaren en geç 72 saat içinde Kişisel Verileri Koruma Kurulu'na bildirir, etkilenen kullanıcıları en kısa sürede bilgilendiririz.</p>
 
 <h2>7. Çocuklar</h2>
 <p>Uygulama 13 yaşın altındaki çocuklara yönelik değildir ve onlardan bilerek veri toplamaz.</p>
@@ -72,12 +80,13 @@
 <h2>8. Değişiklikler</h2>
 <p>Bu politika güncellenebilir; önemli değişiklikler uygulama içinde duyurulur ve bu sayfadaki tarih yenilenir.</p>
 
-<h2>9. İletişim</h2>
-<p><a href="mailto:growthyinformation@gmail.com">growthyinformation@gmail.com</a></p>
+<h2>9. İletişim ve veri sorumlusu</h2>
+<p><strong>Veri sorumlusu:</strong> Arzu Uğur (şahıs işletmesi) · Emek Mah. Ordu Cad. Aqua City 2010 D Blok No: 1D İç Kapı No: 13, Sancaktepe / İstanbul, Türkiye · Sultanbeyli V.D. 8850189143<br>
+E-posta: <a href="mailto:growthyinformation@gmail.com">growthyinformation@gmail.com</a></p>
 
 <section class="lang" id="en" lang="en">
 <h1>Growthy Privacy Policy</h1>
-<p class="muted">Last updated: October 15, 2026</p>
+<p class="muted">Last updated: November 6, 2026</p>
 
 <p>Growthy ("the App") is an iOS app that lets you generate videos and images with AI from references on your phone and plan a content calendar. This policy explains which of your data is processed when you use the App, why, and what your rights are. The data controller under the Turkish Personal Data Protection Law (KVKK) and the GDPR is the developer of the App. Contact: <a href="mailto:growthyinformation@gmail.com">growthyinformation@gmail.com</a>.</p>
 
@@ -86,7 +95,8 @@
 <li><strong>Account data:</strong> when you use Sign in with Apple, the user identifier and email address Apple provides (a relay address if you chose Hide My Email) and your name if you choose to share it.</li>
 <li><strong>Content you upload:</strong> photos, videos, PDFs and files you add to your collections, links and notes are <strong>stored on your phone</strong>, not on our servers. When you start a generation, only the reference files you selected for it and the text you typed (lines, descriptions, topics) are sent to the generation provider. These files may contain human faces.</li>
 <li><strong>Characters:</strong> when you create a UGC character, the description you write and the generated portraits; portraits stay on your phone and are sent to the generation provider as an identity reference with each UGC generation.</li>
-<li><strong>Edit my video:</strong> the video you choose to edit never leaves your phone. Its speech is transcribed with Apple's speech recognition (which may be processed on Apple's servers); up to 8 frames from the video and the transcript are sent to the AI provider to plan the edit.</li>
+<li><strong>Edit my video:</strong> the full picture of the video you choose to edit never leaves your phone. The video's <strong>audio track</strong> is sent in parts to ElevenLabs (US) to transcribe the speech; if that service is unavailable, Apple's speech recognition is used (which may be processed on Apple's servers). Up to 60 frames from the video are uploaded to Higgsfield and, together with the transcript, sent to the AI provider (Anthropic) to plan the edit.</li>
+<li><strong>Notifications:</strong> if you allow notifications, your device's push token and app language are stored with your account and notifications are sent through the Apple Push Notification service (APNs). The token is deleted when you sign out.</li>
 <li><strong>Generated content:</strong> generated videos and images stay on the generation provider's server for about 7 days and the App downloads them to your phone; we do not store the files, only the job record (model, text, date, address). Content plans and calendar entries are stored as text in your account.</li>
 <li><strong>Purchase records:</strong> the transaction identifier, product identifier and date provided by Apple. Your payment card details stay with Apple; we never see them.</li>
 <li><strong>Technical logs:</strong> standard server logs such as IP address and request time, kept for security and debugging.</li>
@@ -110,26 +120,33 @@
 <li><strong>Supabase Inc.:</strong> database and authentication; job records, credit balance, content plans and your calendar live there. No files are stored.</li>
 <li><strong>Higgsfield AI:</strong> video and image generation. Your reference files are uploaded from your phone directly to Higgsfield and processed with the prompt text; Higgsfield keeps outputs for about 7 days, during which the App downloads them to your phone.</li>
 <li><strong>Anthropic PBC (Claude):</strong> analysis of your reference images, script and scene writing, quality review, choosing the video style, content calendars and the ad advisor report are done with the Claude model. The reference images you select (including faces), video frames, transcripts, the text you write and the link, note and PDF/text contents of your collection (read on the phone and sent as text) are sent to the model.</li>
-<li><strong>ElevenLabs:</strong> voice-over. Narration and spoken-line text is turned into speech, including voice-over lines in Edit my video.</li>
+<li><strong>ElevenLabs (US):</strong> voice-over, music and speech transcription. Narration and spoken-line text is turned into speech, including voice-over lines in Edit my video, and the audio track of the video you upload is transcribed (the audio is processed only for transcription and is not stored by us).</li>
+<li><strong>BytePlus (ByteDance group, Singapore):</strong> the Seedance video model and character portrait generation. For these, the reference images you select (including the face in a character portrait), the prompt text and the voice-over file are sent to BytePlus; outputs are kept for about 24 hours and transferred to the App within that time. An irreversible hash of your account ID is sent instead of your identity.</li>
 </ul>
 <p><strong>Explicit consent:</strong> before any data is sent to the AI services above, the App shows on first sign-in which data goes to which service and asks for your explicit consent; no generation runs without it. You can withdraw consent in <strong>Profile › AI data sharing</strong>; after withdrawing, new generations cannot be started.</p>
-<p>These providers may host data outside Türkiye (EU and/or US). The transfer relies on the explicit consent you give when you start using the App and on the providers' contractual commitments.</p>
+<p>These providers may host data outside Türkiye (EU, US and/or Singapore). The transfer relies on the explicit consent you give when you start using the App and on the providers' contractual commitments.</p>
 
 <h2>4. Retention</h2>
 <ul>
 <li>Collections and downloaded content stay on your phone and are removed when you delete the App. Job records, content plans and calendar entries are kept in your account until you delete them or close your account.</li>
 <li>Purchase records are kept for as long as required by law and Apple's refund processes.</li>
 <li>Server logs are kept for a limited period and deleted automatically.</li>
-<li>So that the welcome gift (a free trial video) is given to each person only once, an irreversible hash (SHA-256) of your email address is kept even after your account is deleted; your email address cannot be recovered from it.</li>
+<li>So that the welcome gift (a free trial video) is given to each person only once, a SHA-256 hash of your Apple user ID (or, if unavailable, your email address) is kept even after your account is deleted. It does not show your identity directly but is pseudonymous data.</li>
+<li>Even after you delete your account, the following are kept, unlinked from you or under a user number, for legal and abuse-prevention purposes: AI data sharing consent records (when and to which version you consented), subscription periods, which account a purchase transaction was credited to, and transcription usage counters.</li>
 <li>If Apple refunds a purchase, Apple notifies us and the credits added by that purchase are deducted from your balance.</li>
 </ul>
 <p><strong>Profile › Delete account</strong> in the App permanently deletes your account, job records, plans, calendar and credit balance. Unused credits are not refunded. Files on your phone are yours and are not deleted.</p>
+
+<h3 id="usage-measurement">Anonymous usage measurement</h3>
+<p>To improve the App we count which steps are used (e.g. app opened, signed in, trial started, payment screen viewed). For this the App creates a random device identifier on install; it is not linked to your account, name or email. Only the step name, date, interface language and app version are sent; each step is counted at most once a day. It is not used for advertising or tracking and is not shared with third parties; it is kept in Supabase (EU, Frankfurt) for at most 13 months.</p>
+<h3 id="waitlist">Waitlist (website)</h3>
+<p>The email address you enter in the waitlist form on our website is stored in Supabase (EU, Frankfurt) only to send you a single announcement when the App launches; nothing else is sent and it is not shared with third parties. A hash of your IP address is kept for at most 1 day to prevent abuse. The list is deleted after the announcement; you can ask for earlier deletion at <a href="mailto:growthyinformation@gmail.com">growthyinformation@gmail.com</a>. The site uses no cookies, analytics or tracking, and fonts are served from the site itself.</p>
 
 <h2>5. Your rights</h2>
 <p>Under KVKK article 11 and the GDPR you may access, correct and delete your data, restrict or object to its processing, and request portability. Send requests to <a href="mailto:growthyinformation@gmail.com">growthyinformation@gmail.com</a>; we answer within 30 days.</p>
 
 <h2>6. Security</h2>
-<p>Data is encrypted in transit with TLS. The database uses row-level access rules, so no user can reach another user's data. Generation provider keys are kept server-side only and are never embedded in the App.</p>
+<p>Data is encrypted in transit with TLS. The database uses row-level access rules, so no user can reach another user's data. Generation provider keys are kept server-side only and are never embedded in the App. If a security breach affects your personal data, we notify the Turkish Personal Data Protection Authority within 72 hours of becoming aware of it and inform affected users as soon as possible.</p>
 
 <h2>7. Children</h2>
 <p>The App is not directed at children under 13 and does not knowingly collect data from them.</p>
@@ -137,8 +154,9 @@
 <h2>8. Changes</h2>
 <p>This policy may be updated; material changes are announced in the App and the date on this page is refreshed.</p>
 
-<h2>9. Contact</h2>
-<p><a href="mailto:growthyinformation@gmail.com">growthyinformation@gmail.com</a></p>
+<h2>9. Contact and data controller</h2>
+<p><strong>Data controller:</strong> Arzu Uğur (sole proprietorship) · Emek Mah. Ordu Cad. Aqua City 2010 D Blok No: 1D, Apt. 13, Sancaktepe, Istanbul, Türkiye · tax no. 8850189143 (Sultanbeyli)<br>
+Email: <a href="mailto:growthyinformation@gmail.com">growthyinformation@gmail.com</a></p>
 </section>
 </main>
 </body>
