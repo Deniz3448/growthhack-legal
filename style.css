@@ -17,3 +17,7 @@ section.lang{border-top:1px solid var(--line);padding-top:16px;margin-top:40px}
 .langs a{white-space:nowrap}
 [dir=rtl] ul{padding-left:0;padding-right:20px}
 [dir=rtl] nav a{margin-right:0;margin-left:12px}
+.tbl{overflow-x:auto;margin:0 0 16px}
+table{border-collapse:collapse;min-width:640px;font-size:14px;line-height:1.45}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:start;vertical-align:top}
+th{color:var(--muted);font-weight:600}
