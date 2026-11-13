@@ -2,41 +2,401 @@
 <html lang="tr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Growthy · Telefonundan reklam ajansı</title>
+<meta name="description" content="Ürününü anlat, Growthy yapay zekâ ile UGC videosu, ürün vitrini ve marka filmi çeksin. iPhone için, yakında App Store'da.">
 <meta name="theme-color" content="#0f1113">
-<title>Growthy</title>
-<meta name="description" content="Growthy — telefonundan reklam ajansı. Gizlilik, kullanım şartları, veri işleme ve fatura bilgisi, iletişim.">
-<link rel="icon" href="icon.png">
-<link rel="stylesheet" href="style.css">
+<meta property="og:title" content="Growthy · Telefonundan reklam ajansı">
+<meta property="og:description" content="AI ile UGC video, ürün vitrini ve marka filmi. İlk reklam videon ücretsiz.">
+<meta property="og:image" content="media/ugc-elif.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="media/icon.png">
+<link rel="apple-touch-icon" href="media/icon.png">
+<style>
+/* Font sitede barındırılır: ziyaretçinin tarayıcısı Google'a bağlanmaz (KVKK yurt dışı aktarım / GDPR, 2026-10-31). Space Grotesk, OFL. */
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:300 700;font-display:swap;src:url(media/fonts/SpaceGrotesk-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:300 700;font-display:swap;src:url(media/fonts/SpaceGrotesk-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+:root{
+  --ground:#0f1113; --tile:#1c1e20; --tile2:#23262a;
+  --ink:#f7f7f8; --muted:#a8a8a8; --accent:#d1fe17; --on-accent:#0f1113;
+  --r:20px; --m:clamp(16px,2.4vw,32px);
+  --display:"Space Grotesk",system-ui,sans-serif;
+  --text:-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Roboto,sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ground);color:var(--ink);font:17px/1.55 var(--text);overflow-x:hidden}
+img,video,svg{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3,.wordmark,.statement{font-family:var(--display);font-weight:600;letter-spacing:-.035em;margin:0}
+p{margin:0}
+::selection{background:var(--accent);color:var(--on-accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{padding-inline:var(--m)}
+
+/* nav */
+.bar{position:fixed;inset:0 0 auto;z-index:20;display:flex;align-items:center;gap:28px;padding:14px var(--m);background:var(--ground)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:-.02em}
+.brand img{width:32px;height:32px;border-radius:8px}
+.bar nav{display:flex;gap:24px;margin-left:auto;font-size:15px}
+.bar nav a{text-decoration:none;color:var(--muted);transition:color .2s}
+.bar nav a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;background:var(--accent);color:var(--on-accent);font:600 17px/1 var(--text);padding:14px 22px;text-decoration:none;cursor:pointer;transition:transform .25s var(--ease),background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:scale(.97)}
+.bar .btn{padding:11px 18px;font-size:15px;flex:none}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);align-items:end;padding:96px var(--m) 56px;overflow:hidden}
+.slab{position:absolute;right:-12vw;top:-18vh;height:136vh;aspect-ratio:9/16;background:var(--accent);border-radius:calc(var(--r)*3);z-index:0}
+.hero-copy{position:relative;z-index:2;max-width:760px;padding-bottom:4vh}
+.hero h1{font-size:clamp(48px,7.6vw,124px);line-height:.92}
+.hero .lead{margin-top:28px;font-size:20px;max-width:34ch}
+.join{margin-top:32px;display:flex;flex-wrap:wrap;gap:10px;max-width:520px}
+.join input{flex:1 1 220px;min-width:0;border:0;border-radius:999px;background:var(--tile2);color:var(--ink);font:17px var(--text);padding:15px 20px}
+.join input::placeholder{color:var(--muted)}
+.join .msg{flex-basis:100%;font-size:15px;color:var(--muted);min-height:1.5em}
+.join .msg.ok{color:var(--accent)}
+.facts{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:15px;color:var(--muted)}
+.facts span{display:flex;align-items:center;gap:8px}
+.facts span::before,.formats li::before{content:"";width:7px;height:12px;border-radius:2px;background:var(--accent);flex:none}
+.reel{position:relative;z-index:1;justify-self:center;height:min(78vh,780px);aspect-ratio:9/16;border-radius:var(--r);overflow:hidden;background:var(--tile)}
+.reel video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.6s ease}
+.reel video.on{opacity:1}
+.reel-tag{position:absolute;left:12px;bottom:12px;z-index:2;background:var(--ground);color:var(--ink);font-size:15px;font-weight:600;padding:8px 12px;border-radius:999px}
+
+/* showcase */
+section{position:relative}
+.show{padding:clamp(120px,14vw,200px) var(--m);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--m);align-items:end;min-height:100svh}
+.formats{list-style:none;margin:0;padding:0;font-family:var(--display);font-size:clamp(36px,4.4vw,64px);line-height:1.05;letter-spacing:-.03em}
+.formats li{margin:0}
+.formats .head{color:var(--muted);margin-bottom:14px}
+.formats button{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:14px;color:var(--muted);transition:color .25s,transform .35s var(--ease)}
+.formats li::before{display:none}
+.formats button::before{content:"";width:12px;height:20px;border-radius:3px;background:var(--tile2);transition:background .25s}
+.formats button:hover{color:var(--ink)}
+.formats button[aria-pressed="true"]{color:var(--ink);transform:translateX(6px)}
+.formats button[aria-pressed="true"]::before{background:var(--accent)}
+.formats button:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+.stage{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(20px,3vw,48px);align-items:end}
+.stage-shape{position:relative;height:min(76vh,760px);aspect-ratio:9/16;background:var(--accent);border-radius:calc(var(--r)*2);transition:background .5s}
+.stage-shape .clip{position:absolute;left:11%;right:11%;bottom:7%;top:-9%;border-radius:var(--r);overflow:hidden;background:var(--tile)}
+.stage-shape video{width:100%;height:100%;object-fit:cover;transition:opacity .3s}
+.sound{position:absolute;right:10px;top:10px;z-index:2;border:0;border-radius:999px;background:var(--ground);color:var(--ink);font:600 15px var(--text);padding:9px 14px;cursor:pointer}
+.fact{max-width:30ch;padding-bottom:7%}
+.fact h3{font-size:20px;line-height:1.2}
+.fact p{margin-top:12px;color:var(--ink)}
+.fact small{display:block;margin-top:14px;color:var(--muted);font-size:15px}
+
+/* how */
+.how{padding:clamp(120px,14vw,200px) var(--m);background:var(--tile)}
+.how-head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--m);align-items:end}
+.how h2,.feat h2,.faq h2{font-size:clamp(36px,4.4vw,64px);line-height:1}
+.how-head p{max-width:46ch}
+.flow{margin-top:56px;width:100%;height:auto}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--m);margin-top:28px}
+.steps h3{font-size:20px;line-height:1.2}
+.steps p{margin-top:8px;max-width:34ch}
+
+/* features */
+.feat{padding:clamp(120px,14vw,200px) var(--m) 0}
+.feat-head{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--m);align-items:end}
+.feat-head p{max-width:40ch}
+.screens{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,2vw,32px);margin-top:64px;align-items:start}
+.scr{margin:0}
+.scr:nth-child(even){margin-top:64px}
+.glass{padding:7px;background:var(--tile2);border-radius:48px;transition:transform .5s var(--ease)}
+.glass img{width:100%;height:auto;border-radius:41px;background:#000}
+.scr:hover .glass{transform:translateY(-6px)}
+.scr figcaption{margin-top:20px;padding-inline:6px}
+.scr h3{font-size:20px;line-height:1.2;letter-spacing:-.02em}
+.scr p{margin-top:6px;color:var(--muted);font-size:15px;max-width:30ch}
+
+/* faq */
+.faq{padding:clamp(120px,14vw,200px) var(--m);display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:var(--m);align-items:start}
+.qs{display:grid;gap:8px}
+details{background:var(--tile);border-radius:var(--r);transition:background .3s}
+details[open]{background:var(--accent);color:var(--on-accent)}
+summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px;padding:18px 24px;font:500 20px/1.3 var(--display);letter-spacing:-.015em}
+summary::-webkit-details-marker{display:none}
+.pm{position:relative;width:16px;height:16px;flex:none}
+.pm::before,.pm::after{content:"";position:absolute;left:0;top:6.5px;width:16px;height:3px;border-radius:2px;background:currentColor;transition:transform .3s var(--ease)}
+.pm::after{transform:rotate(90deg)}
+details[open] .pm::after{transform:rotate(0)}
+details p{padding:0 24px 24px;max-width:56ch;font-size:17px}
+
+/* cta */
+.cta{padding:clamp(120px,14vw,200px) var(--m);background:var(--accent);color:var(--on-accent)}
+.cta h2{font-size:clamp(48px,7.6vw,124px);line-height:.92}
+.cta .join{max-width:640px;margin-top:40px}
+.cta .join input{background:var(--ground)}
+.cta .join .btn{background:var(--ground);color:var(--ink)}
+.cta .join .msg,.cta .join .msg.ok{color:var(--on-accent)}
+.cta .note{margin-top:10px;font-size:17px}
+
+/* footer */
+footer{padding:72px var(--m) 32px}
+.mark{display:flex;align-items:flex-end;gap:4px;height:34svh;min-height:180px}
+.mark span{flex:1;display:flex;align-items:flex-end;justify-content:center;border-radius:calc(var(--r)*.7);font:700 clamp(48px,7.6vw,124px)/.8 var(--display);color:var(--ground);padding-bottom:.08em;letter-spacing:-.04em}
+.cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--m);margin-top:56px;font-size:15px}
+.cols a{display:block;text-decoration:none;color:var(--muted);margin-top:6px}
+.cols a:hover{color:var(--ink)}
+.cols b{font-weight:600}
+.legal{display:flex;justify-content:space-between;gap:16px;margin-top:48px;font-size:15px;color:var(--muted)}
+
+/* motion */
+.rv{opacity:1}
+@media (prefers-reduced-motion:no-preference){
+  .js .rv{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0ms)}
+  .js .rv.in{opacity:1;transform:none}
+  .slab{animation:drift 14s ease-in-out infinite alternate}
+  @keyframes drift{to{transform:translate(-2vw,3vh) rotate(-2deg)}}
+}
+@media (prefers-reduced-motion:reduce){.reel video{transition:none}}
+
+/* phone */
+@media (max-width:860px){
+  .bar nav{display:none}
+  .bar .btn{margin-left:auto}
+  .hero{grid-template-columns:1fr;padding-top:84px;gap:32px}
+  .slab{right:-46vw;top:64px;height:60svh}
+  .reel-tag{display:none}
+  .reel{height:62svh;order:-1;justify-self:start}
+  .hero-copy{padding-bottom:0}
+  .show{grid-template-columns:minmax(0,1fr);min-height:0}
+  .stage{grid-template-columns:minmax(0,1fr);order:-1}
+  .stage-shape{height:auto;width:min(86vw,420px);justify-self:center;margin-top:9%}
+  .formats{font-size:24px;min-width:0;display:flex;flex-wrap:wrap;gap:6px 18px;padding-bottom:8px}
+  .formats .head{display:none}
+  .fact{padding-bottom:0}
+  .how-head{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr;gap:28px}
+  .feat-head{grid-template-columns:1fr}
+  .screens{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(var(--m)*-1);padding-inline:var(--m);gap:14px;scrollbar-width:none}
+  .scr{flex:0 0 68vw;scroll-snap-align:center}
+  .scr:nth-child(even){margin-top:0}
+  .faq{grid-template-columns:1fr}
+  summary{font-size:18px;min-height:64px;padding:16px 20px}
+  .mark{height:22svh;min-height:120px}
+  .mark span{font-size:12vw}
+  .cols{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .legal{flex-direction:column}
+}
+.consent{flex-basis:100%;margin:6px 0 0;font-size:13px;line-height:1.45;color:var(--muted)}
+.consent a{color:inherit;text-decoration:underline}
+</style>
 </head>
 <body>
-<main>
-<div class="topbar"><a class="brand" href="index.html"><img src="icon.png" alt="" width="30" height="30"><span>Growthy</span></a></div>
+<header class="bar">
+  <a class="brand" href="#top" aria-label="Growthy ana sayfa"><img src="media/icon.png" alt="" width="32" height="32">Growthy</a>
+  <nav aria-label="Bölümler"><a href="#ornekler">Örnekler</a><a href="#nasil">Nasıl çalışır</a><a href="#icinde">Uygulama</a><a href="#sss">SSS</a></nav>
+  <a class="btn" href="#katil">Listeye katıl</a>
+</header>
 
-<section class="hero">
-<h1>Telefonundan <em>reklam ajansı</em>.</h1>
-<p>Growthy, ürünün ya da uygulaman için UGC video, ürün vitrini, marka filmi, belgesel reel ve içerik takvimini yapay zekâ ile üreten iPhone uygulamasıdır.</p>
-</section>
+<main id="top">
+  <section class="hero" aria-labelledby="h-hero">
+    <div class="slab" aria-hidden="true"></div>
+    <div class="hero-copy">
+      <h1 id="h-hero" class="rv">Telefonundan reklam ajansı</h1>
+      <p class="lead rv" style="--d:90ms">Ürününü anlat; Growthy yapay zekâ ile UGC videosu, ürün vitrini ve marka filmi çeksin. Çekim yok, oyuncu yok, ajans yok.</p>
+      <form class="join rv" style="--d:180ms" data-waitlist novalidate>
+        <label class="sr" for="e1" hidden>E-posta adresin</label>
+        <input id="e1" type="email" name="email" placeholder="E-posta adresin" autocomplete="email" required>
+        <button class="btn" type="submit">Çıkınca haber ver</button>
+        <p class="msg" role="status" aria-live="polite"></p>
+        <p class="consent">E-postanı yalnızca uygulama yayına girdiğinde tek bir haber e-postası göndermek için saklarız (<a href="privacy.html#bekleme-listesi">Gizlilik Politikası</a>). İstediğin an silinmesini isteyebilirsin.</p>
+      </form>
+      <div class="facts rv" style="--d:240ms"><span>iPhone için</span><span>Yakında App Store'da</span><span>İlk reklam videon ücretsiz</span></div>
+    </div>
+    <div class="reel rv" style="--d:120ms" aria-label="Growthy ile üretilmiş örnek videolar">
+      <video class="on" src="media/ugc-can.mp4" poster="media/ugc-can.jpg" muted playsinline loop preload="auto" data-tag="UGC video"></video>
+      <video src="media/vitrin.mp4" poster="media/vitrin.jpg" muted playsinline loop preload="none" data-tag="Ürün vitrini"></video>
+      <video src="media/film.mp4" poster="media/film.jpg" muted playsinline loop preload="none" data-tag="Marka filmi"></video>
+      <video src="media/ugc-elif.mp4" poster="media/ugc-elif.jpg" muted playsinline loop preload="none" data-tag="UGC video"></video>
+      <span class="reel-tag" aria-live="off">UGC video</span>
+    </div>
+  </section>
 
-<div class="cards">
-<a class="card" href="privacy.html"><b>Gizlilik Politikası</b><span>Hangi verinin nereye gittiği, ne kadar saklandığı ve haklarınız.</span><i>Oku →</i></a>
-<a class="card" href="terms.html"><b>Kullanım Şartları</b><span>Krediler, abonelikler, iadeler ve üretilen içeriklerin kullanımı.</span><i>Oku →</i></a>
-<a class="card" href="business.html"><b>Veri işleme ve fatura</b><span>İşletmeler ve ajanslar için veri işleme, sözleşme ve fatura bilgisi.</span><i>Oku →</i></a>
-<a class="card" href="mailto:growthyinformation@gmail.com"><b>İletişim ve destek</b><span>Soru, öneri, veri talebi ve hesap işlemleri için bize yaz.</span><i>growthyinformation@gmail.com</i></a>
-</div>
+  <section class="show" id="ornekler" aria-labelledby="h-show">
+    <ul class="formats" role="list">
+      <li class="head" id="h-show">Ne çekelim?</li>
+      <li><button type="button" aria-pressed="true" data-i="0">UGC video</button></li>
+      <li><button type="button" aria-pressed="false" data-i="1">Ürün vitrini</button></li>
+      <li><button type="button" aria-pressed="false" data-i="2">Marka filmi</button></li>
+      <li><button type="button" aria-pressed="false" data-i="3">Belgesel reel</button></li>
+      <li><button type="button" aria-pressed="false" data-i="4">Videomu düzenle</button></li>
+      <li><button type="button" aria-pressed="false" data-i="5">Görselden video</button></li>
+    </ul>
+    <div class="stage">
+      <div class="stage-shape">
+        <div class="clip">
+          <video id="sv" src="media/ugc-elif.mp4" poster="media/ugc-elif.jpg" muted playsinline loop preload="metadata"></video>
+          <button class="sound" type="button" aria-pressed="false">Sesi aç</button>
+        </div>
+      </div>
+      <div class="fact" aria-live="polite">
+        <h3 id="fh">UGC video</h3>
+        <p id="fp">Bir içerik üreticisi ürününü kendi ağzından anlatır. Ağız hareketleri sesle uyumlu, video 7 dilde.</p>
+        <small>Örnek, Growthy'nin üretim hattından çıktı.</small>
+      </div>
+    </div>
+  </section>
 
-<section class="lang" id="en" lang="en">
-<h2>Growthy — your ad agency in your phone</h2>
-<p class="muted">Growthy is an iPhone app that uses AI to create UGC videos, product showcases, brand films, documentary reels and content calendars for your product or app.</p>
-<p><a href="privacy.html#en">Privacy Policy</a> · <a href="terms.html#en">Terms of Use</a> · <a href="business.html#en">Data processing &amp; invoices</a> · <a href="mailto:growthyinformation@gmail.com">Contact</a></p>
-<p class="langs">Deutsch: <a href="privacy.de.html">Datenschutz</a> · <a href="terms.de.html">Nutzungsbedingungen</a> · <a href="business.de.html">Datenverarbeitung</a><br>
-Français : <a href="privacy.fr.html">Confidentialité</a> · <a href="terms.fr.html">Conditions</a> · <a href="business.fr.html">Données et factures</a><br>
-Español: <a href="privacy.es.html">Privacidad</a> · <a href="terms.es.html">Términos</a> · <a href="business.es.html">Datos y facturas</a><br>
-<span dir="rtl" lang="ar">العربية: <a href="privacy.ar.html">الخصوصية</a> · <a href="terms.ar.html">الشروط</a> · <a href="business.ar.html">البيانات والفواتير</a></span><br>
-Русский: <a href="privacy.ru.html">Конфиденциальность</a> · <a href="terms.ru.html">Условия</a> · <a href="business.ru.html">Данные и счета</a></p>
-</section>
+  <section class="how" id="nasil" aria-labelledby="h-how">
+    <div class="how-head">
+      <h2 id="h-how" class="rv">Üç adımda reklam</h2>
+      <p class="rv" style="--d:90ms">Elindeki dağınık malzemeyi verirsin: ürün fotoğrafları, web siten, App Store sayfan, bir iki cümle. Growthy hepsini inceler, senaryoyu yazar ve paylaşmaya hazır videoyu telefonuna gönderir.</p>
+    </div>
+    <svg class="flow rv" style="--d:150ms" viewBox="0 0 1200 270" role="img" aria-label="Dağınık malzeme ortada tek şeride toplanıyor, sağda düzenli video sırasına dönüşüyor"></svg>
+    <div class="steps">
+      <div class="rv"><h3>Anlat</h3><p>Ürün fotoğrafını, linkini ya da App Store sayfanı ekle. Growthy logonu, ekranlarını ve ürününü kendisi tanır.</p></div>
+      <div class="rv" style="--d:90ms"><h3>Seç</h3><p>UGC, vitrin, film ya da belgesel. Karar veremezsen yapay zekâ ürününe en uygun tarzı seçer.</p></div>
+      <div class="rv" style="--d:180ms"><h3>Paylaş</h3><p>Altyazısı, logosu ve kapanışı hazır video telefonuna gelir. Tek dokunuşla TikTok'a ya da Instagram'a.</p></div>
+    </div>
+  </section>
 
-<footer class="site"><span>© 2026 Growthy</span><a href="https://www.instagram.com/growthy.app/" rel="noopener">Instagram</a><a href="mailto:growthyinformation@gmail.com">İletişim: growthyinformation@gmail.com</a></footer>
+  <section class="feat" id="icinde" aria-labelledby="h-feat">
+    <div class="feat-head">
+      <h2 id="h-feat" class="rv">Ajansın yaptığı her şey, tek uygulamada</h2>
+      <p class="rv" style="--d:90ms">Aşağıdakiler tasarım taslağı değil, Growthy'nin bugünkü ekranları.</p>
+    </div>
+    <div class="screens">
+      <figure class="scr rv"><div class="glass"><img src="media/ekran-karakter.webp" alt="Karakter seçimi: altı hazır yüz ve yeni karakter oluşturma" width="720" height="1564" loading="lazy"></div><figcaption><h3>Kendi karakterin</h3><p>Hazır yüzlerden seç ya da tarif et; her videoda aynı kişi.</p></figcaption></figure>
+      <figure class="scr rv" style="--d:80ms"><div class="glass"><img src="media/ekran-reklam.webp" alt="Reklam videosu ekranı: ücretsiz deneme düğmesi ve ürün anlatımı" width="720" height="1564" loading="lazy"></div><figcaption><h3>Tarzı yapay zekâ seçer</h3><p>Belgesel, vitrin, film ya da tanıtım; ürününe en uygun olanı.</p></figcaption></figure>
+      <figure class="scr rv" style="--d:160ms"><div class="glass"><img src="media/ekran-takvim.webp" alt="İçerik takvimi: hafta şeridi ve sıraya dizilmeyi bekleyen videolar" width="720" height="1564" loading="lazy"></div><figcaption><h3>İçerik takvimi</h3><p>7, 14 ya da 30 günün planı yazılır, videoları da üretilir.</p></figcaption></figure>
+      <figure class="scr rv" style="--d:240ms"><div class="glass"><img src="media/ekran-kesfet.webp" alt="İlham galerisi: türlere göre örnek videolar" width="720" height="1564" loading="lazy"></div><figcaption><h3>İlham galerisi</h3><p>Beğendiğin örneğe dokun, aynısını kendi ürününle üret.</p></figcaption></figure>
+    </div>
+  </section>
+
+  <section class="faq" id="sss" aria-labelledby="h-faq">
+    <h2 id="h-faq">Merak edilenler</h2>
+    <div class="qs">
+      <details name="q" open><summary>Ne zaman çıkıyor?<span class="pm" aria-hidden="true"></span></summary><p>Growthy şu an test aşamasında. App Store'a çıktığı gün listeye yazılanlara ilk haber gider.</p></details>
+      <details name="q"><summary>Ücretli mi?<span class="pm" aria-hidden="true"></span></summary><p>İlk 5 saniyelik reklam videon ücretsiz. Sonrasında kredi paketi ya da aylık abonelikle devam edersin; her üretimin bedeli başlamadan önce gösterilir, kullanmadığın kredi sonraki aya devreder.</p></details>
+      <details name="q"><summary>Kameraya çıkmam gerekiyor mu?<span class="pm" aria-hidden="true"></span></summary><p>Hayır. Ürün fotoğrafın, web siten ya da App Store linkin yeter. Elinde çekilmiş bir video varsa "Videomu düzenle" onu kesip altyazılı bir reels'e çevirir.</p></details>
+      <details name="q"><summary>Videolardaki kişiler gerçek mi?<span class="pm" aria-hidden="true"></span></summary><p>Hayır, hepsi yapay zekâ ile oluşturulmuş karakterler. Hazır olanlardan seçebilir ya da kendi karakterini tarif edebilirsin. Paylaşım metnine yapay zekâ etiketi otomatik eklenir.</p></details>
+      <details name="q"><summary>Hangi dillerde video üretiyor?<span class="pm" aria-hidden="true"></span></summary><p>Türkçe, İngilizce, Almanca, İspanyolca, Fransızca, Arapça ve Rusça.</p></details>
+      <details name="q"><summary>Videoları reklamda kullanabilir miyim?<span class="pm" aria-hidden="true"></span></summary><p>Evet, ticari kullanım dahil. Yayının reklam etiketi ve platform kurallarına uygunluğu sende.</p></details>
+      <details name="q"><summary>Android'de var mı?<span class="pm" aria-hidden="true"></span></summary><p>Şimdilik yalnız iPhone için.</p></details>
+      <details name="q"><summary>Üretim başarısız olursa ne olur?<span class="pm" aria-hidden="true"></span></summary><p>Tamamlanamayan işin kredisi otomatik olarak bakiyene iade edilir.</p></details>
+    </div>
+  </section>
+
+  <section class="cta" id="katil" aria-labelledby="h-cta">
+    <h2 id="h-cta" class="rv">İlk reklam videon bizden.</h2>
+    <form class="join rv" style="--d:90ms" data-waitlist novalidate>
+      <label for="e2" hidden>E-posta adresin</label>
+      <input id="e2" type="email" name="email" placeholder="E-posta adresin" autocomplete="email" required>
+      <button class="btn" type="submit">Listeye katıl</button>
+      <p class="msg" role="status" aria-live="polite"></p>
+      <p class="consent">E-postanı yalnızca uygulama yayına girdiğinde tek bir haber e-postası göndermek için saklarız (<a href="privacy.html#bekleme-listesi">Gizlilik Politikası</a>). İstediğin an silinmesini isteyebilirsin.</p>
+    </form>
+    <p class="note rv" style="--d:150ms">Uygulama yayına girdiği gün tek bir e-posta atarız. Başka bir şey göndermeyiz.</p>
+  </section>
 </main>
+
+<footer>
+  <div class="mark" aria-label="Growthy">
+    <span style="height:100%;background:var(--accent)">G</span><span style="height:74%;background:var(--ink)">r</span><span style="height:88%;background:var(--muted)">o</span><span style="height:66%;background:var(--ink)">w</span><span style="height:94%;background:var(--accent)">t</span><span style="height:80%;background:var(--muted)">h</span><span style="height:70%;background:var(--ink)">y</span>
+  </div>
+  <div class="cols">
+    <div><b>Growthy</b><a href="#ornekler">Örnekler</a><a href="#nasil">Nasıl çalışır</a><a href="#sss">SSS</a></div>
+    <div><b>Yasal</b><a href="privacy.html">Gizlilik</a><a href="terms.html">Kullanım şartları</a><a href="business.html">Veri işleme ve fatura</a></div>
+    <div><b>Takip et</b><a href="https://www.instagram.com/growthy.app/" rel="noopener">Instagram</a></div>
+    <div><b>İletişim</b><a href="mailto:growthyinformation@gmail.com">growthyinformation@gmail.com</a></div>
+  </div>
+  <div class="legal"><span>© 2026 Growthy</span><span>Sayfadaki videolar ve karakterler yapay zekâ ile üretildi.</span></div>
+</footer>
+
+<script>
+document.documentElement.classList.add('js');
+const SB = 'https://tnmshnubnzwclkbbfpcv.supabase.co/rest/v1/waitlist';
+const KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRubXNobnVibnp3Y2xrYmJmcGN2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE4MjAwOTgsImV4cCI6MjEwNzM5NjA5OH0.oIu-ch_JYSrOl67Qr3xC6kaH6aExSX5p4ZWEPfVFu0U';
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Bekleme listesi
+document.querySelectorAll('[data-waitlist]').forEach(f => {
+  const input = f.querySelector('input'), msg = f.querySelector('.msg'), btn = f.querySelector('button');
+  f.addEventListener('submit', async e => {
+    e.preventDefault();
+    const email = input.value.trim().toLowerCase();
+    msg.className = 'msg';
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { msg.textContent = 'Geçerli bir e-posta adresi yaz.'; input.focus(); return; }
+    btn.disabled = true; msg.textContent = 'Kaydediliyor…';
+    try {
+      const r = await fetch(SB, { method: 'POST', headers: { apikey: KEY, Authorization: 'Bearer ' + KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal' }, body: JSON.stringify({ email, lang: 'tr' }) });
+      if (r.status === 201 || r.status === 409) { msg.className = 'msg ok'; msg.textContent = 'Listedesin. Yayın günü haber vereceğiz.'; input.value = ''; }
+      else throw new Error(r.status);
+    } catch { msg.textContent = 'Kaydedemedik. growthyinformation@gmail.com adresine yazabilirsin.'; }
+    btn.disabled = false;
+  });
+});
+
+// Hero: videolar yavaş geçişle değişir
+const reel = document.querySelector('.reel'), vids = [...reel.querySelectorAll('video')], tag = reel.querySelector('.reel-tag');
+let cur = 0, timer;
+vids[0].play().catch(() => {});
+function next() {
+  const n = (cur + 1) % vids.length, v = vids[n];
+  if (v.preload === 'none') v.preload = 'auto';
+  v.currentTime = 0; v.play().catch(() => {});
+  v.classList.add('on'); vids[cur].classList.remove('on'); tag.textContent = v.dataset.tag;
+  const old = vids[cur]; setTimeout(() => old.pause(), 1700);
+  cur = n;
+}
+if (!reduce) timer = setInterval(next, 5600);
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) { clearInterval(timer); vids[cur].pause(); }
+  else { vids[cur].play().catch(() => {}); if (!reduce) timer = setInterval(next, 5600); }
+});
+
+// Örnekler: tür seçince video ve açıklama değişir
+const FORMATS = [
+  ['UGC video', 'ugc-elif', 'Bir içerik üreticisi ürününü kendi ağzından anlatır. Ağız hareketleri sesle uyumlu, video 7 dilde.', '#d1fe17'],
+  ['Ürün vitrini', 'vitrin', 'Ürünün stüdyo ışığında süzülür, logon ve sloganın son saniyede gelir. Fotoğrafı yeter.', '#f7f7f8'],
+  ['Marka filmi', 'film', 'Çok sahneli kısa film: yapay zekâ çekimleri, yazı kartları ve logonla biten kapanış.', '#d1fe17'],
+  ['Belgesel reel', 'belgesel', 'Anlatıcı sesli, haritalı ve sayaçlı bilgi videosu. Markanı bir hikâyenin içinden anlatır.', '#a8a8a8'],
+  ['Videomu düzenle', 'duzenle', 'Kendi çektiğin ham videoyu yükle; sessizlikleri keser, altyazı, efekt ve müzik ekler.', '#d1fe17'],
+  ['Görselden video', 'kafe', 'Tek bir fotoğrafını birkaç saniyelik sinematik bir çekime çevirir.', '#f7f7f8'],
+];
+const sv = document.getElementById('sv'), shape = document.querySelector('.stage-shape'), fh = document.getElementById('fh'), fp = document.getElementById('fp'), snd = document.querySelector('.sound');
+const btns = [...document.querySelectorAll('.formats button')];
+btns.forEach(b => b.addEventListener('click', () => {
+  const [title, file, text, color] = FORMATS[+b.dataset.i];
+  btns.forEach(x => x.setAttribute('aria-pressed', x === b));
+  b.scrollIntoView({ block: 'nearest', inline: 'center', behavior: reduce ? 'auto' : 'smooth' });
+  sv.style.opacity = 0;
+  setTimeout(() => { sv.src = `media/${file}.mp4`; sv.poster = `media/${file}.jpg`; sv.play().catch(() => {}); sv.style.opacity = 1; }, reduce ? 0 : 300);
+  shape.style.background = color; fh.textContent = title; fp.textContent = text;
+}));
+snd.addEventListener('click', () => {
+  sv.muted = !sv.muted; snd.setAttribute('aria-pressed', !sv.muted); snd.textContent = sv.muted ? 'Sesi aç' : 'Sesi kapat';
+  if (!sv.muted) sv.play().catch(() => {});
+});
+new IntersectionObserver(([e]) => { if (e.isIntersecting) sv.play().catch(() => {}); else sv.pause(); }, { threshold: .3 }).observe(sv);
+
+// Nasıl çalışır: dağınık → şerit → düzenli sıra (9:16 küçük kareler)
+(function drawFlow() {
+  const svg = document.querySelector('.flow'), NS = 'http://www.w3.org/2000/svg';
+  let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const W = 14, H = 24, out = [];
+  for (let i = 0; i < 42; i++) out.push([20 + rnd() * 330, 10 + rnd() * 230, rnd() < .5 ? '#3a3d42' : '#5a5d62', (rnd() - .5) * 40]);
+  for (let i = 0; i < 39; i++) out.push([420 + (i % 13) * 28, 74 + Math.floor(i / 13) * 40, '#a8a8a8', 0]);
+  for (let r = 0; r < 5; r++) for (let c = 0; c < 9; c++) out.push([830 + c * 40, 12 + r * 50, '#d1fe17', 0]);
+  out.forEach(([x, y, fill, rot], i) => {
+    const el = document.createElementNS(NS, 'rect');
+    Object.entries({ x, y, width: W, height: H, rx: 3, fill, transform: `rotate(${rot} ${x + W / 2} ${y + H / 2})` }).forEach(([k, v]) => el.setAttribute(k, v));
+    if (!reduce) { el.style.opacity = 0; el.style.transition = `opacity .5s ${i * 4}ms`; }
+    svg.appendChild(el);
+  });
+  if (!reduce) new IntersectionObserver(([e], o) => { if (e.isIntersecting) { svg.querySelectorAll('rect').forEach(r => r.style.opacity = 1); o.disconnect(); } }, { threshold: .3 }).observe(svg);
+})();
+
+// Bölüm girişleri
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .15 });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+</script>
 </body>
 </html>
