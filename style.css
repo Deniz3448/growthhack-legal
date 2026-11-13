@@ -1,23 +1,52 @@
-:root{--bg:#fff;--fg:#1a1a1a;--muted:#5c5c5c;--line:#e6e6e6;--accent:#b85c1a}
-@media (prefers-color-scheme:dark){:root{--bg:#0f0f10;--fg:#ececec;--muted:#a0a0a0;--line:#2a2a2c;--accent:#f0a05a}}
+/* Growthy web sitesi — uygulamayla aynı kimlik: koyu zemin, lime vurgu, Space Grotesk başlık. */
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:300 700;font-display:swap;src:url(fonts/SpaceGrotesk-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:300 700;font-display:swap;src:url(fonts/SpaceGrotesk-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+:root{--bg:#0f1113;--tile:#1c1e20;--tile2:#23262a;--fg:#f7f7f8;--muted:#a8a8a8;--line:rgba(255,255,255,.08);--accent:#d1fe17;--on-accent:#0f1113;
+  --display:'Space Grotesk',-apple-system,BlinkMacSystemFont,sans-serif;--text:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color-scheme:dark}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;-webkit-text-size-adjust:100%}
-main{max-width:720px;margin:0 auto;padding:32px 16px 64px}
-header{border-bottom:1px solid var(--line);margin-bottom:24px;padding-bottom:16px}
-h1{font-size:28px;line-height:1.2;margin:0 0 8px}
-h2{font-size:20px;margin:32px 0 8px}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 var(--text);-webkit-text-size-adjust:100%;overflow-x:hidden}
+::selection{background:var(--accent);color:var(--on-accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+main{max-width:760px;margin:0 auto;padding:20px 16px 48px}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:4px 0 28px}
+.brand{display:inline-flex;align-items:center;gap:10px;color:var(--fg);text-decoration:none;font:700 20px/1 var(--display);letter-spacing:-.02em}
+.brand img{border-radius:8px;display:block}
+header{border-bottom:1px solid var(--line);margin-bottom:28px;padding-bottom:20px}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.02em;color:var(--fg)}
+h1{font-size:clamp(28px,6vw,40px);line-height:1.1;margin:0 0 10px}
+h2{font-size:21px;line-height:1.25;margin:36px 0 10px}
 h3{font-size:17px;margin:24px 0 6px}
 p,li{margin:0 0 10px}
 ul{padding-left:20px}
+li::marker{color:var(--accent)}
+strong{color:var(--fg)}
 small,.muted{color:var(--muted)}
-nav a{color:var(--accent);text-decoration:none;margin-right:12px}
-a{color:var(--accent)}
-section.lang{border-top:1px solid var(--line);padding-top:16px;margin-top:40px}
-.langs{font-size:14px}
+a{color:var(--accent);text-underline-offset:3px}
+header nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+header nav a{color:var(--fg);text-decoration:none;background:var(--tile);border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:14px;line-height:1.3}
+header nav a:hover{background:var(--tile2)}
+header nav a[aria-current=page]{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+.langs{font-size:14px;color:var(--muted)}
 .langs a{white-space:nowrap}
+section.lang{border-top:1px solid var(--line);padding-top:20px;margin-top:48px}
 [dir=rtl] ul{padding-left:0;padding-right:20px}
-[dir=rtl] nav a{margin-right:0;margin-left:12px}
-.tbl{overflow-x:auto;margin:0 0 16px}
+.tbl{overflow-x:auto;margin:0 0 16px;border:1px solid var(--line);border-radius:12px}
 table{border-collapse:collapse;min-width:640px;font-size:14px;line-height:1.45}
-th,td{border:1px solid var(--line);padding:8px 10px;text-align:start;vertical-align:top}
-th{color:var(--muted);font-weight:600}
+th,td{border-bottom:1px solid var(--line);padding:9px 12px;text-align:start;vertical-align:top}
+tr:last-child td{border-bottom:0}
+th{color:var(--muted);font-weight:600;background:var(--tile)}
+footer.site{display:flex;flex-wrap:wrap;gap:8px 18px;border-top:1px solid var(--line);margin-top:56px;padding-top:20px;font-size:14px;color:var(--muted)}
+footer.site a{color:var(--muted);text-decoration:none}
+footer.site a:hover{color:var(--fg)}
+/* Ana sayfa */
+.hero{padding:12px 0 8px}
+.hero h1{font-size:clamp(34px,8vw,56px);line-height:1.02;margin-bottom:14px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{color:var(--muted);font-size:18px;max-width:560px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:28px 0 8px}
+.card{display:block;background:var(--tile);border:1px solid var(--line);border-radius:16px;padding:18px;text-decoration:none;color:var(--fg);transition:background .2s,transform .2s}
+.card:hover{background:var(--tile2);transform:translateY(-2px)}
+.card b{display:block;font:600 18px/1.25 var(--display);letter-spacing:-.01em;margin-bottom:6px}
+.card span{color:var(--muted);font-size:14px;line-height:1.5}
+.card i{font-style:normal;color:var(--accent);font-size:13px;font-weight:600;display:block;margin-top:12px}
